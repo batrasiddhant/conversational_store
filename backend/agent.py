@@ -15,7 +15,7 @@ from sentence_transformers import SentenceTransformer
 
 # Load a pre-trained model
 embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
-api_key = os.getenv('GOOGLE_API_KEY') # Replace with your key or use environment variables
+api_key = str(os.environ.get('GOOGLE_API_KEY')) # Replace with your key or use environment variables
 
 # --- Load data (ensure paths are correct) ---
 try:
