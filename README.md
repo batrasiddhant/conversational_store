@@ -101,7 +101,7 @@ Data Preparation and Langgraph Implementation for agent:
 
 ## 7. Setup and Installation
 
-1.  **Clone the repository**
+1.  **Clone the repository (branch : dev)**
 2.  **Create a Python virtual environment (recommended):**
     ```bash
     python -m venv venv
@@ -114,13 +114,17 @@ Data Preparation and Langgraph Implementation for agent:
     ```
 ## 8. How to Run
 
-1.  **Ensure all data files** (`customer_support.csv`, `product_reviews.csv`, `skincare catalog.xlsx`) are in the same directory as the notebook, or update the paths in the notebook accordingly. The provided notebook seems to expect them in the `/content/` directory if running in Colab, or relative paths like `../` if the files are one level up from where the script/notebook is eventually run. Adjust as needed.
-2.  **Run the Jupyter Notebook cells sequentially.**
-    * The initial cells handle library installations and data loading/preprocessing.
-    * The FAISS index and comprehensive profiles are saved, so subsequent runs might load these precomputed files if available.
-    * The final cells demonstrate the LangGraph agent's functionality with example queries.
-3.  **Interacting with the Agent:**
-    The `agent_main(user_query, current_chat_history)` function in the latter part of the notebook is the primary way to interact with the recommendation system. It takes the user's query and the existing chat history as input and returns the agent's response and updated history.
+1.  **Backend:**
+    ```bash
+    cd backend
+    uvicorn app:app --relaod
+    ```
+2.  **Fronten:**
+   ```bash
+   npm run dev
+   ```
+   
+    
 
 ## 9. Agent Logic Details
 
