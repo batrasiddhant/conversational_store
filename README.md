@@ -49,7 +49,7 @@ The system utilizes the following data files:
 
 ## 5. Structure & Workflow
 
-Data Preparation and Langgraph Implementation for agent:
+Data Preparation(`data_prep_and_agent_testing.ipynb`) and Langgraph Implementation for agent (`testing.ipynb`):
 
 1.  **Setup & Installation:**
     * Installs necessary Python libraries (`google-generativeai`, `langchain`, `langgraph`, `langchain-google-genai`, `wikipedia`, `sentence-transformers`, `faiss-cpu`, `nltk`).
@@ -123,8 +123,6 @@ Data Preparation and Langgraph Implementation for agent:
       ```bash
       npm run dev
       ```
-   
-    
 
 ## 9. Agent Logic Details
 
