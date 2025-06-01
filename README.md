@@ -145,7 +145,3 @@ The agent's behavior is determined by the `input_type` classification:
 * **User Profile Management:** Store user preferences and past interactions to personalize recommendations further.
 * **Hybrid Recommendation Engine:** Combine content-based filtering (using embeddings) with collaborative filtering if user-item interaction data becomes available.
 * **Advanced Sentiment Analysis:** Use more nuanced sentiment models and aspect-based sentiment analysis to understand what specific features users like or dislike.
-* **UI Integration:** Develop a proper frontend (e.g., using Next.js as hinted in the notebook comments) for a user-friendly chat interface.
-* **Error Handling and Robustness:** Add more comprehensive error handling throughout the data processing and agent interaction pipeline.
-* **A/B Testing Framework:** Implement a way to test different recommendation strategies or LLM prompts.
-
