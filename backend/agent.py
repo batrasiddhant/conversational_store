@@ -51,8 +51,8 @@ class PersonalShopperState(TypedDict):
     identified_categories: List[str] | None
     identified_tags: List[str] | None
 
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", temperature=0)
-llm1 = ChatGoogleGenerativeAI(model="gemini-2.5-flash-preview-05-20", temperature=0)
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", temperature=0, api_key=api_key)
+llm1 = ChatGoogleGenerativeAI(model="gemini-2.5-flash-preview-05-20", temperature=0, api_key=api_key)
 
 # --- Helper function to format chat history ---
 def format_chat_history_for_prompt(chat_history: List[Dict[str, str]] | None) -> str:
