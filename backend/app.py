@@ -145,4 +145,6 @@ async def get_products(category: Optional[str] = None):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT")), log_level="debug")
+    port = int(os.environ.get("PORT"))
+    print(port)
+    uvicorn.run(app, host="0.0.0.0", port=port), log_level="debug")
