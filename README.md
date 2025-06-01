@@ -119,10 +119,10 @@ Data Preparation and Langgraph Implementation for agent:
     cd backend
     uvicorn app:app --relaod
     ```
-2.  **Fronten:**
-   ```bash
-   npm run dev
-   ```
+2.  **Frontend:**
+      ```bash
+      npm run dev
+      ```
    
     
 
