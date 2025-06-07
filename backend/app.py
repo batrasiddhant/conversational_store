@@ -55,17 +55,14 @@ async def search(query: Query):
         informational_answer = output['informational_answer']
         input_type = output['input_type']
         answer = """"""
-        match input_type:
-            case 'keyword':
-                for i in recommended_products:
-                    answer = answer + i['name'] + " : " + i['justification'] + "\n"
-                answer = answer + follow_up_question
-            case 'vague':
-                answer = "\n".join(clarification_questions)
-            case 'question':
-                answer = informational_answer
-            case _:
-                answer = ""
+        if input_type == 'keyword':
+            for i in recommended_products:
+                answer = answer + i['name'] + " : " + i['justification'] + "\n"
+            answer = answer + follow_up_question    
+        elif input_type == 'vague': 
+            answer = "\n".join(clarification_questions)
+        elif input_type == 'question':
+            answer = informational_answer
         
         results = []
         keys = ['product_id','name','category','description','top_ingredients','tags','price','margin' ,'justification']
