@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Call your FastAPI backend
-    const response = await fetch("http://127.0.0.1:8000/api/search", {
+    const response = await fetch("http://ec2-13-235-74-126.ap-south-1.compute.amazonaws.com:8142/api/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
