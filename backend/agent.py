@@ -1,21 +1,19 @@
 import os
-import getpass
 from typing import List, Dict, Any, TypedDict, Tuple # Added Tuple
 import json # Ensure json is imported
 import re # Ensure re is imported
 
-from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.graph import StateGraph, END
 import faiss
-import numpy as np
 import pandas as pd
 
 from sentence_transformers import SentenceTransformer
+from typing import Union
 
 # Load a pre-trained model
 embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
-api_key = str(os.environ.get('GOOGLE_API_KEY')) # Replace with your key or use environment variables
+os.environ["GOOGLE_API_KEY"] = 'AIzaSyDlo-rq9YxnUs4r5sJEHlgMw1dgs5TAd08' # Replace with your key or use environment variables
 
 # --- Load data (ensure paths are correct) ---
 try:
@@ -41,18 +39,18 @@ except FileNotFoundError as e:
 # --- State Definition with Chat History ---
 class PersonalShopperState(TypedDict):
     input: str  # User's original query
-    chat_history: List[Dict[str, str]] | None # e.g. [{"role": "user", "content": "..."}, {"role": "assistant", "content": "..."}]
-    input_type: str | None  # 'keyword', 'vague', 'good', or 'informational'
-    clarification_questions: List[str] | None # Questions to ask the user
-    clarification_answers: Dict[str, str] | None # User's answers to questions (used if user provides answers later)
-    recommended_products: List[Dict[str, Any]] | None # List of recommended products
-    follow_up_question: str | None # Question to ask after recommendations for keyword inputs
-    informational_answer: str | None
-    identified_categories: List[str] | None
-    identified_tags: List[str] | None
+    chat_history: Union[List[Dict[str, str]], None]  # e.g. [{"role": "user", "content": "..."}, {"role": "assistant", "content": "..."}]
+    input_type: Union[str, None]  # 'keyword', 'vague', 'good', or 'informational'
+    clarification_questions: Union[List[str], None]  # Questions to ask the user
+    clarification_answers: Union[Dict[str, str], None]  # User's answers to questions (used if user provides answers later)
+    recommended_products: Union[List[Dict[str, Any]], None]  # List of recommended products
+    follow_up_question: Union[str, None]  # Question to ask after recommendations for keyword inputs
+    informational_answer: Union[str, None]
+    identified_categories: Union[List[str], None]
+    identified_tags: Union[List[str], None]
 
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", temperature=0, api_key=api_key)
-llm1 = ChatGoogleGenerativeAI(model="gemini-2.5-flash-preview-05-20", temperature=0, api_key=api_key)
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", temperature=0)
+llm1 = ChatGoogleGenerativeAI(model="gemini-2.5-flash-preview-05-20", temperature=0)
 
 # --- Helper function to format chat history ---
 def format_chat_history_for_prompt(chat_history: List[Dict[str, str]] | None) -> str:
