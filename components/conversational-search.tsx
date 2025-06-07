@@ -31,7 +31,7 @@ export default function ConversationalSearch({ onResults }: ConversationalSearch
       try {
       setLoading(true)
       console.log("query before fetch:", query);
-      const response = await fetch("http://ec2-13-235-74-126.ap-south-1.compute.amazonaws.com:8142/api/chat", {
+      const response = await fetch("https://65.1.244.7/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
