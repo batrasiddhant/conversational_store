@@ -94,20 +94,19 @@ async def chat(query: ChatQuery):
         input_type = output['input_type']
         # print("6")
         answer = """"""
-        match input_type:
-            case 'keyword':
-                for i in recommended_products:
-                    answer = answer + i['name'] + " : " + i['justification'] + "\n"
-                answer = answer + follow_up_question
-            case 'vague':
-                answer = "\n".join(clarification_questions)
-            case 'informational':
-                answer = informational_answer
-            case 'good':
-                for i in recommended_products:
-                    answer = answer + i['name'] + " : " + i['justification'] + "\n"
-            case _:
-                answer = ""
+        if input_type == 'keyword':
+            for i in recommended_products:
+                answer = answer + i['name'] + " : " + i['justification'] + "\n"
+            answer = answer + follow_up_question
+        elif input_type == 'vague':
+            answer = "\n".join(clarification_questions)
+        elif input_type == 'informational':
+            answer = informational_answer
+        elif input_type == 'good':
+            for i in recommended_products:
+                answer = answer + i['name'] + " : " + i['justification'] + "\n"
+        else:
+            answer = ""
         
         results = []
         # print("7")
