@@ -637,7 +637,8 @@ def agent_main(user_query: str, current_chat_history: Union[List[Dict[str, str]]
 
     # Append assistant's response to history for the next turn
     # This is the history that should be passed to the next call of agent_main
-    updated_full_chat_history = turn_chat_history + [{"role": "assistant", "content": assistant_response_str}]
+    updated_full_chat_history = turn_chat_history
+    # + [{"role": "assistant", "content": assistant_response_str}]
     print(updated_full_chat_history)
 
     return {
