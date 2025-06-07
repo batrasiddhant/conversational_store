@@ -53,8 +53,8 @@ llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest", temperature=0)
 llm1 = ChatGoogleGenerativeAI(model="gemini-2.5-flash-preview-05-20", temperature=0)
 
 # --- Helper function to format chat history ---
-def format_chat_history_for_prompt(chat_history: List[Dict[str, str]] | None) -> str:
-    if not chat_history or len(chat_history) <= 1: # Don't show history if it's just the current user query
+def format_chat_history_for_prompt(chat_history: Union[List[Dict[str, str]], None]) -> str:
+    if not chat_history or len(chat_history) <= 1:  # Don't show history if it's just the current user query
         return "No significant prior conversation history."
     
     # Display all but the last message (which is the current user input already in 'input_text')
@@ -555,7 +555,7 @@ workflow.add_edge("recommend_products", END) # Follow-up is handled within the n
 app = workflow.compile()
 
 # --- Main Agent Function (Updated for Chat History) ---
-def agent_main(user_query: str, current_chat_history: List[Dict[str, str]] | None = None):
+def agent_main(user_query: str, current_chat_history: Union[List[Dict[str, str]], None] = None):
     if current_chat_history is None:
         current_chat_history = []
 
