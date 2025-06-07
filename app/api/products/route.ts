@@ -5,7 +5,7 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const category = searchParams.get("category");
 
-    const fastapiUrl = new URL("http://127.0.0.1:8000/api/products");
+    const fastapiUrl = new URL("http://ec2-13-235-74-126.ap-south-1.compute.amazonaws.com:8142/api/products");
 
     if (category) {
       fastapiUrl.searchParams.set("category", category);
